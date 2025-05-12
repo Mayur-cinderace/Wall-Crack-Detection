@@ -1,7 +1,3 @@
-# Start Ollama HTTP server in CMD:
-#   ollama serve
-# This hosts all available models at http://127.0.0.1:11434
-
 import streamlit as st
 import cv2
 import numpy as np
@@ -10,9 +6,7 @@ import requests
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.badges import badge
 
-# Streamlit app for wall crack severity assessment and repair suggestions
-SERVER_URL = 'http://127.0.0.1:11434/v1'  # Ollama HTTP server API base
-
+SERVER_URL = 'http://127.0.0.1:11434/v1'
 
 def detect_cracks(image: np.ndarray):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -24,7 +18,6 @@ def detect_cracks(image: np.ndarray):
     total_area = sum(cv2.contourArea(cnt) for cnt in contours)
     return processed, total_area
 
-
 def classify_severity(area: float):
     if area < 1000:
         return 'Low (Hairline)', 'Monitor periodically; cosmetic treatment if desired.'
@@ -32,7 +25,6 @@ def classify_severity(area: float):
         return 'Medium (Moderate)', 'Apply crack filler and sealant; monitor for progression.'
     else:
         return 'High (Severe)', 'Structural repair required: routing and sealing, injection, or reinforcement.'
-
 
 def get_repair_suggestions(severity: str):
     model_name = 'llama3.2:latest'

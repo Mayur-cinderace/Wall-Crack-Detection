@@ -126,9 +126,8 @@ def main():
         st.write(suggestions)
 
     add_vertical_space(2)
-    badge(type="github", name="Your GitHub")
     st.markdown("---")
-    st.markdown("Built by You")
+    st.markdown("wall crack detection with Profiling.")
 
 if __name__ == '__main__':
     main()
